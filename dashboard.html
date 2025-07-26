@@ -1,0 +1,1551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="download.jfif" type="image/x-icon">
+    <title>AccelMedia - Premium Social Media Accounts Marketplace</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3f37c9;
+            --accent: #4895ef;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #4cc9f0;
+            --warning: #f72585;
+            --trust-blue: #3a86ff;
+            --trust-green: #38b000;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        /* Header */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            color: var(--accent);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 15px;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .auth-buttons .btn {
+            padding: 0.5rem 1.2rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 5rem 5%;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .search-bar {
+            display: flex;
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 50px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .search-bar input {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            border: none;
+            outline: none;
+            font-size: 1rem;
+        }
+        
+        .search-bar button {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 0 1.5rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .search-bar button:hover {
+            background: #3a7bd5;
+        }
+        
+        /* Platform Filter */
+        .platform-filter {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            padding: 1.5rem 5%;
+            background: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .platform-btn {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 50px;
+            padding: 0.5rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .platform-btn:hover, .platform-btn.active {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: white;
+        }
+        
+        .platform-btn i {
+            font-size: 1.2rem;
+        }
+        
+        /* Accounts Grid */
+        .container {
+            max-width: 1400px;
+            margin: 3rem auto;
+            padding: 0 5%;
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50%;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+        
+        .accounts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .account-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .account-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .account-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--warning);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .account-img {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .account-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .account-card:hover .account-img img {
+            transform: scale(1.05);
+        }
+        
+        .account-info {
+            padding: 1.5rem;
+        }
+        
+        .account-platform {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .account-platform i {
+            font-size: 1.2rem;
+        }
+        
+        .account-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+        
+        .account-stats {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .account-stat {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+        
+        .account-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 1rem 0;
+        }
+        
+        .btn-view {
+            display: block;
+            width: 100%;
+            padding: 0.8rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.3s;
+            text-align: center;
+            text-decoration: none;
+        }
+        
+        .btn-view:hover {
+            background: var(--secondary);
+        }
+        
+        /* Account Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+        
+        .modal-content {
+            background: white;
+            max-width: 900px;
+            margin: 3rem auto;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.3);
+            animation: modalFadeIn 0.3s;
+        }
+        
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .modal-title i {
+            color: var(--primary);
+        }
+        
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #999;
+            transition: color 0.3s;
+        }
+        
+        .close-modal:hover {
+            color: var(--dark);
+        }
+        
+        .modal-body {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        .modal-left {
+            flex: 1;
+            min-width: 300px;
+            padding: 1.5rem;
+        }
+        
+        .modal-right {
+            flex: 1;
+            min-width: 300px;
+            padding: 1.5rem;
+            background: #f9f9f9;
+            border-left: 1px solid #eee;
+        }
+        
+        .account-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .gallery-img {
+            height: 80px;
+            border-radius: 5px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        .gallery-img:hover {
+            transform: scale(1.05);
+        }
+        
+        .gallery-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .main-img {
+            height: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+        
+        .main-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .account-details {
+            margin-bottom: 1.5rem;
+        }
+        
+        .detail-item {
+            margin-bottom: 0.8rem;
+            display: flex;
+        }
+        
+        .detail-label {
+            font-weight: 500;
+            color: #666;
+            min-width: 120px;
+        }
+        
+        .detail-value {
+            color: var(--dark);
+            font-weight: 500;
+        }
+        
+        .verification-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            background: var(--trust-green);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            margin-left: 0.5rem;
+        }
+        
+        .verification-badge i {
+            font-size: 0.7rem;
+        }
+        
+        .account-description {
+            margin: 1.5rem 0;
+            line-height: 1.7;
+            color: #555;
+        }
+        
+        .purchase-section {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .account-price-lg {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .price-original {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 1.2rem;
+            margin-left: 0.5rem;
+        }
+        
+        .btn-buy {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            background: var(--trust-green);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+        
+        .btn-buy:hover {
+            background: #2e9e0b;
+        }
+        
+        .payment-methods {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .payment-method {
+            width: 50px;
+            height: 30px;
+            border: 1px solid #eee;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .payment-method img {
+            max-width: 80%;
+            max-height: 80%;
+        }
+        
+        .trust-badges {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.8rem;
+            color: #666;
+        }
+        
+        .trust-badge i {
+            color: var(--trust-blue);
+        }
+        
+        /* Credentials Display */
+        .credentials-container {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+            border: 1px solid #e9ecef;
+        }
+        
+        .credentials-title {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .credentials-item {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .credentials-label {
+            font-weight: 600;
+            min-width: 100px;
+            color: var(--dark);
+        }
+        
+        .credentials-value {
+            background: white;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            border: 1px solid #dee2e6;
+            flex: 1;
+            font-family: monospace;
+            position: relative;
+        }
+        
+        .copy-btn {
+            margin-left: 0.5rem;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 0.3rem 0.6rem;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: background 0.3s;
+        }
+        
+        .copy-btn:hover {
+            background: var(--secondary);
+        }
+        
+        /* Success Modal */
+        .success-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 1001;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .success-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            animation: modalFadeIn 0.3s;
+        }
+        
+        .success-icon {
+            font-size: 3rem;
+            color: var(--trust-green);
+            margin-bottom: 1rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 4rem 5% 2rem;
+        }
+        
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+        }
+        
+        .social-link:hover {
+            background: var(--primary);
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+            
+            .nav-links {
+                gap: 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .search-bar {
+                flex-direction: column;
+                border-radius: 10px;
+            }
+            
+            .search-bar input {
+                padding: 1rem;
+            }
+            
+            .search-bar button {
+                padding: 1rem;
+            }
+            
+            .platform-filter {
+                flex-wrap: wrap;
+            }
+            
+            .modal-body {
+                flex-direction: column;
+            }
+            
+            .modal-right {
+                border-left: none;
+                border-top: 1px solid #eee;
+            }
+        }
+
+        /* Loading spinner */
+        .spinner {
+            display: none;
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            border-top: 4px solid var(--primary);
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* No results message */
+        .no-results {
+            text-align: center;
+            padding: 2rem;
+            color: #666;
+            font-size: 1.2rem;
+            display: none;
+            grid-column: 1 / -1;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="navbar">
+            <a href="#" class="logo">
+                <i class="fas fa-bolt"></i>
+                VoltageMedia
+            </a>
+            
+            <div class="nav-links">
+                <a href="#">Home</a>
+                <a href="#">Marketplace</a>
+                <a href="#">Testimonials</a>
+                <a href="#">Support</a>
+            </div>
+            
+            <div class="auth-buttons">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwgT2eHovk83Kd0D870HAoiPDi4IQLN9jQjg&s" class="btn btn-login" style="height: 80px; width: 96px; border-radius: 100px;" alt="user">
+            </div>
+        </nav>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Buy Premium Social Media Accounts</h1>
+            <p>Trusted marketplace with verified accounts and secure transactions</p>
+            
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Search for all accounts...">
+                <button type="submit" id="searchButton"><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Platform Filter -->
+    <div class="platform-filter">
+        <button class="platform-btn active" data-platform="all">
+            <i class="fas fa-globe"></i>
+            All Platforms
+        </button>
+        <button class="platform-btn" data-platform="instagram">
+            <i class="fab fa-instagram"></i>
+            Instagram
+        </button>
+        <button class="platform-btn" data-platform="twitter">
+            <i class="fab fa-twitter"></i>
+            Twitter
+        </button>
+        <button class="platform-btn" data-platform="youtube">
+            <i class="fab fa-youtube"></i>
+            YouTube
+        </button>
+        <button class="platform-btn" data-platform="tiktok">
+            <i class="fab fa-tiktok"></i>
+            TikTok
+        </button>
+        <button class="platform-btn" data-platform="facebook">
+            <i class="fab fa-facebook"></i>
+            Facebook
+        </button>
+        <button class="platform-btn" data-platform="linkedin">
+            <i class="fab fa-linkedin"></i>
+            LinkedIn
+        </button>
+    </div>
+    
+    <!-- Accounts Grid -->
+    <div class="container">
+        <h2 class="section-title">Featured Accounts</h2>
+        
+        <div class="accounts-grid" id="accountsGrid">
+            <!-- Accounts will be dynamically inserted here -->
+        </div>
+        <div class="spinner" id="loadingSpinner"></div>
+        <div class="no-results" id="noResults">No accounts found matching your search criteria.</div>
+    </div>
+    
+    <!-- Account Modal -->
+    <div class="modal" id="accountModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modalAccountTitle">
+                    <!-- Will be filled dynamically -->
+                </h3>
+                <button class="close-modal" onclick="closeModal()">&times;</button>
+            </div>
+            
+            <div class="modal-body">
+                <div class="modal-left">
+                    <div class="main-img">
+                        <img id="modalMainImg" src="" alt="Account Image">
+                    </div>
+                    
+                    <div class="account-gallery" id="accountGallery">
+                        <!-- Gallery images will be inserted here -->
+                    </div>
+                    
+                    <div class="account-details" id="accountDetails">
+                        <!-- Account details will be inserted here -->
+                    </div>
+                    
+                    <div class="account-description" id="accountDescription">
+                        <!-- Description will be inserted here -->
+                    </div>
+                </div>
+                
+                <div class="modal-right">
+                    <div class="purchase-section">
+                        <h3>Purchase This Account</h3>
+                        
+                        <div class="account-price-lg" id="modalAccountPrice">
+                            <!-- Price will be inserted here -->
+                        </div>
+                        
+                        <p>Secure transaction with instant delivery after payment verification.</p>
+                        
+                        <button class="btn-buy" onclick="initiatePayment()">
+                            <i class="fas fa-lock"></i> Buy Now Securely
+                        </button>
+                        
+                        <div class="trust-badges">
+                            <div class="trust-badge">
+                                <i class="fas fa-shield-alt"></i>
+                                Verified Seller
+                            </div>
+                            <div class="trust-badge">
+                                <i class="fas fa-exchange-alt"></i>
+                                Instant Transfer
+                            </div>
+                            <div class="trust-badge">
+                                <i class="fas fa-headset"></i>
+                                24/7 Support
+                            </div>
+                        </div>
+                        
+                        <h4>Accepted Payment Methods</h4>
+                        <div class="payment-methods">
+                           <div class="payment-method">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/2560px-Visa_Inc._logo.svg.png" alt="Visa">
+                            </div>
+                            <div class="payment-method">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/1280px-Mastercard-logo.svg.png" alt="Mastercard">
+                            </div>
+                            <div class="payment-method">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Paystack_Logo.png/640px-Paystack_Logo.png" alt="PayStack">
+                            </div>
+                            <div class="payment-method">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Bitcoin.svg/1200px-Bitcoin.svg.png" alt="Bitcoin">
+                            </div>
+                            <div class="payment-method">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Bank_icon.svg/2048px-Bank_icon.svg.png" alt="Bank Transfer">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Success Modal -->
+    <div class="success-modal" id="successModal">
+        <div class="success-content">
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h3>Purchase Successful!</h3>
+            <p>Your account has been purchased successfully. Here are your login credentials:</p>
+            <div class="credentials-container" id="successCredentials">
+                <!-- Credentials will be inserted here -->
+            </div>
+            <button class="btn-buy" onclick="closeSuccessModal()" style="margin-top: 1.5rem;">
+                <i class="fas fa-check"></i> Got it, thanks!
+            </button>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>VoltagelMedia</h3>
+                <p>The most trusted marketplace for buying and selling social media accounts. Secure transactions and verified sellers.</p>
+                
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Marketplace</a></li>
+                    <li><a href="#">Testimonials</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Account Types</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Instagram Accounts</a></li>
+                    <li><a href="#">Twitter Accounts</a></li>
+                    <li><a href="#">YouTube Channels</a></li>
+                    <li><a href="#">TikTok Accounts</a></li>
+                    <li><a href="#">Facebook Pages</a></li>
+                    <li><a href="#">LinkedIn Accounts</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Support</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Safety Guidelines</a></li>
+                    <li><a href="#">Transaction Process</a></li>
+                    <li><a href="#">Dispute Resolution</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            &copy; 2023 AccelMedia. All rights reserved.
+        </div>
+    </footer>
+    
+    <script>
+        // Sample account data with phone numbers and passwords
+        const accountsData = [
+            // Instagram accounts
+            {
+                id: 'instagram-premium',
+                platform: 'instagram',
+                platformIcon: 'fab fa-instagram',
+                title: '@premiumfashion',
+                verified: true,
+                badge: 'Verified',
+                followers: '45.8K',
+                engagement: '5.2%',
+                age: '2y',
+                price: '₦1,250',
+                originalPrice: '₦1,800',
+                phone: '+2348012345678',
+                password: 'Fashion@123',
+                images: [
+                    'https://i.imgur.com/JQlz5Wn.png',
+                    'https://source.unsplash.com/random/300x300/?fashion,post',
+                    'https://source.unsplash.com/random/300x300/?fashion,photo'
+                ],
+                details: [
+                    { label: 'Followers:', value: '45,800' },
+                    { label: 'Engagement Rate:', value: '5.2%' },
+                    { label: 'Account Age:', value: '2 years' },
+                    { label: 'Niche:', value: 'Fashion & Lifestyle' }
+                ],
+                description: 'Premium fashion Instagram account with high engagement and loyal following. Perfect for fashion brands, influencers, or marketers looking to establish presence in the fashion niche.'
+            },
+            // Twitter account
+            {
+                id: 'twitter-verified',
+                platform: 'twitter',
+                platformIcon: 'fab fa-twitter',
+                title: '@TechInsider',
+                verified: true,
+                badge: 'Blue Check',
+                followers: '128K',
+                engagement: '3.8%',
+                age: '5y',
+                price: '₦2,800',
+                originalPrice: '₦3,500',
+                phone: '+2348023456789',
+                password: 'Tech@2023',
+                images: [
+                    'https://source.unsplash.com/random/600x400/?twitter',
+                    'https://source.unsplash.com/random/300x300/?tech,news'
+                ],
+                details: [
+                    { label: 'Followers:', value: '128,000' },
+                    { label: 'Engagement Rate:', value: '3.8%' },
+                    { label: 'Account Age:', value: '5 years' }
+                ],
+                description: 'Verified Twitter account with blue checkmark focused on technology news and gadget reviews. Has established credibility in the tech space.'
+            },
+            // YouTube account
+            {
+                id: 'youtube-gaming',
+                platform: 'youtube',
+                platformIcon: 'fab fa-youtube',
+                title: 'GameMaster',
+                verified: false,
+                followers: '320K',
+                engagement: '98%',
+                age: '3y',
+                price: '₦4,500',
+                originalPrice: '₦5,800',
+                phone: '+2348034567890',
+                password: 'Gaming$456',
+                images: [
+                    'https://source.unsplash.com/random/600x400/?gaming',
+                    'https://source.unsplash.com/random/300x300/?videogame'
+                ],
+                details: [
+                    { label: 'Subscribers:', value: '320,000' },
+                    { label: 'Like Ratio:', value: '98%' },
+                    { label: 'Channel Age:', value: '3 years' }
+                ],
+                description: 'Popular gaming YouTube channel with over 320,000 subscribers. Focuses on game reviews, walkthroughs, and live streams.'
+            },
+            // TikTok account
+            {
+                id: 'tiktok-viral',
+                platform: 'tiktok',
+                platformIcon: 'fab fa-tiktok',
+                title: '@DanceFever',
+                verified: true,
+                badge: 'Viral',
+                followers: '1.2M',
+                engagement: '8.5%',
+                age: '1y',
+                price: '₦7,200',
+                originalPrice: '₦9,000',
+                phone: '+2348045678901',
+                password: 'Dance#789',
+                images: [
+                    'https://i.imgur.com/JQlz5Wn.png',
+                    'https://source.unsplash.com/random/300x300/?dance'
+                ],
+                details: [
+                    { label: 'Followers:', value: '1.2M' },
+                    { label: 'Engagement Rate:', value: '8.5%' },
+                    { label: 'Account Age:', value: '1 year' }
+                ],
+                description: 'Viral TikTok account with over 1.2 million followers focused on dance trends and challenges. Consistently gets high engagement.'
+            },
+            // Facebook accounts (20 total)
+            {
+                id: 'facebook-health',
+                platform: 'facebook',
+                platformIcon: 'fab fa-facebook',
+                title: 'Healthy Living',
+                verified: false,
+                followers: '85.3K',
+                engagement: '4.9/5',
+                age: '4y',
+                price: '₦2,200',
+                originalPrice: '₦2,800',
+                phone: '+2348056789012',
+                password: 'Health@123',
+                images: [
+                    'https://i.imgur.com/jKpGQ3F.png',
+                    'https://source.unsplash.com/random/300x300/?fitness'
+                ],
+                details: [
+                    { label: 'Followers:', value: '85,300' },
+                    { label: 'Rating:', value: '4.9/5' },
+                    { label: 'Page Age:', value: '4 years' }
+                ],
+                description: 'Health and wellness Facebook page with an engaged community. Focuses on healthy living tips, nutrition advice, and fitness routines.'
+            },
+            {
+                id: 'facebook-tech',
+                platform: 'facebook',
+                platformIcon: 'fab fa-facebook',
+                title: 'Tech Trends',
+                verified: true,
+                followers: '120K',
+                engagement: '4.7/5',
+                age: '3y',
+                price: '₦3,500',
+                originalPrice: '₦4,200',
+                phone: '+2348067890123',
+                password: 'Tech$456',
+                images: [
+                    'https://i.imgur.com/jKpGQ3F.png',
+                    'https://source.unsplash.com/random/300x300/?gadgets'
+                ],
+                details: [
+                    { label: 'Followers:', value: '120,000' },
+                    { label: 'Rating:', value: '4.7/5' },
+                    { label: 'Page Age:', value: '3 years' }
+                ],
+                description: 'Technology news and reviews Facebook page with regular updates on the latest gadgets and tech innovations.'
+            },
+            // Add 18 more Facebook accounts here...
+            {
+                id: 'facebook-fashion',
+                platform: 'facebook',
+                platformIcon: 'fab fa-facebook',
+                title: 'Fashion Trends',
+                verified: true,
+                followers: '150K',
+                engagement: '4.8/5',
+                age: '5y',
+                price: '₦100',
+                originalPrice: '₦4,500',
+                phone: '+2348078901234',
+                password: 'Fashion#789',
+                images: [
+                    'https://i.imgur.com/jKpGQ3F.png',
+                    'https://source.unsplash.com/random/300x300/?style'
+                ],
+                details: [
+                    { label: 'Followers:', value: '150,000' },
+                    { label: 'Rating:', value: '4.8/5' },
+                    { label: 'Page Age:', value: '5 years' }
+                ],
+                description: 'Latest fashion trends and styles from around the world. Perfect for fashion brands and influencers.'
+            },
+            // LinkedIn accounts (replacing Reddit)
+            {
+                id: 'linkedin-business',
+                platform: 'linkedin',
+                platformIcon: 'fab fa-linkedin',
+                title: 'Business Network Pro',
+                verified: true,
+                followers: '50K',
+                engagement: '4.5/5',
+                age: '4y',
+                price: '₦5,000',
+                originalPrice: '₦6,000',
+                phone: '+2348089012345',
+                password: 'Linked$123',
+                images: [
+                    'https://i.imgur.com/JrXhLmZ.png',
+                    'https://source.unsplash.com/random/300x300/?office'
+                ],
+                details: [
+                    { label: 'Connections:', value: '50,000' },
+                    { label: 'Engagement:', value: '4.5/5' },
+                    { label: 'Account Age:', value: '4 years' }
+                ],
+                description: 'Professional business networking account with established connections across multiple industries.'
+            },
+            {
+                id: 'linkedin-tech',
+                platform: 'linkedin',
+                platformIcon: 'fab fa-linkedin',
+                title: 'Tech Recruiter',
+                verified: true,
+                followers: '75K',
+                engagement: '4.7/5',
+                age: '3y',
+                price: '₦6,500',
+                originalPrice: '₦7,500',
+                phone: '+2348090123456',
+                password: 'TechRec#456',
+                images: [
+                    'https://i.imgur.com/JrXhLmZ.png',
+                    'https://source.unsplash.com/random/300x300/?interview'
+                ],
+                details: [
+                    { label: 'Connections:', value: '75,000' },
+                    { label: 'Engagement:', value: '4.7/5' },
+                    { label: 'Account Age:', value: '3 years' }
+                ],
+                description: 'Tech recruitment specialist account with connections to top tech talent and hiring managers.'
+            }
+            // Add more LinkedIn accounts as needed
+        ];
+
+        // Current selected account for modal
+        let currentAccount = null;
+        let currentFilter = 'all';
+        let currentSearchQuery = '';
+
+        // DOM elements
+        const accountsGrid = document.getElementById('accountsGrid');
+        const searchInput = document.getElementById('searchInput');
+        const searchButton = document.getElementById('searchButton');
+        const platformBtns = document.querySelectorAll('.platform-btn');
+        const loadingSpinner = document.getElementById('loadingSpinner');
+        const noResults = document.getElementById('noResults');
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            loadPaystack();
+            renderAccounts(accountsData);
+            
+            // Event listeners
+            searchButton.addEventListener('click', handleSearch);
+            searchInput.addEventListener('keyup', function(e) {
+                if (e.key === 'Enter') {
+                    handleSearch();
+                }
+            });
+            
+            platformBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    platformBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    currentFilter = this.dataset.platform;
+                    filterAccounts();
+                });
+            });
+        });
+
+        // Handle search functionality
+        function handleSearch() {
+            currentSearchQuery = searchInput.value.trim().toLowerCase();
+            filterAccounts();
+        }
+
+        // Filter accounts based on platform and search query
+        function filterAccounts() {
+            loadingSpinner.style.display = 'block';
+            noResults.style.display = 'none';
+            accountsGrid.innerHTML = '';
+            
+            // Simulate loading delay
+            setTimeout(() => {
+                let filteredAccounts = accountsData;
+                
+                // Filter by platform
+                if (currentFilter !== 'all') {
+                    filteredAccounts = filteredAccounts.filter(account => account.platform === currentFilter);
+                }
+                
+                // Filter by search query
+                if (currentSearchQuery) {
+                    filteredAccounts = filteredAccounts.filter(account => 
+                        account.title.toLowerCase().includes(currentSearchQuery) || 
+                        account.description.toLowerCase().includes(currentSearchQuery))
+                }
+                
+                if (filteredAccounts.length === 0) {
+                    noResults.style.display = 'block';
+                } else {
+                    renderAccounts(filteredAccounts);
+                }
+                
+                loadingSpinner.style.display = 'none';
+            }, 500);
+        }
+
+        // Render accounts to the grid
+        function renderAccounts(accounts) {
+            accountsGrid.innerHTML = '';
+            
+            accounts.forEach(account => {
+                const accountCard = document.createElement('div');
+                accountCard.className = 'account-card';
+                accountCard.onclick = () => openModal(account.id);
+                
+                let badgeHtml = '';
+                if (account.badge) {
+                    badgeHtml = `<div class="account-badge">${account.badge}</div>`;
+                }
+                
+                accountCard.innerHTML = `
+                    <div class="account-img">
+                        <img src="${account.images[0]}" alt="${account.platform} Account">
+                        ${badgeHtml}
+                    </div>
+                    <div class="account-info">
+                        <div class="account-platform">
+                            <i class="${account.platformIcon}"></i>
+                            ${account.platform.charAt(0).toUpperCase() + account.platform.slice(1)}
+                        </div>
+                        <h3 class="account-title">${account.title}</h3>
+                        <div class="account-stats">
+                            <div class="account-stat">
+                                <i class="fas fa-users"></i> ${account.followers}
+                            </div>
+                            <div class="account-stat">
+                                <i class="${account.platform === 'youtube' ? 'fas fa-thumbs-up' : account.platform === 'linkedin' ? 'fas fa-handshake' : account.platform === 'facebook' ? 'fas fa-thumbs-up' : 'fas fa-heart'}"></i> ${account.engagement}
+                            </div>
+                            <div class="account-stat">
+                                <i class="fas fa-calendar-alt"></i> ${account.age}
+                            </div>
+                        </div>
+                        <div class="account-price">${account.price}</div>
+                        <button class="btn-view">View Details</button>
+                    </div>
+                `;
+                
+                accountsGrid.appendChild(accountCard);
+            });
+        }
+
+        // Modal functionality
+        function openModal(accountId) {
+            currentAccount = accountsData.find(account => account.id === accountId);
+            if (!currentAccount) return;
+            
+            // Set modal title
+            const modalTitle = document.getElementById('modalAccountTitle');
+            modalTitle.innerHTML = `
+                <i class="${currentAccount.platformIcon}"></i>
+                ${currentAccount.title}
+                ${currentAccount.verified ? `
+                <span class="verification-badge">
+                    <i class="fas fa-check"></i>
+                    ${currentAccount.badge || 'Verified'}
+                </span>
+                ` : ''}
+            `;
+            
+            // Set main image
+            document.getElementById('modalMainImg').src = currentAccount.images[0];
+            
+            // Set gallery images
+            const gallery = document.getElementById('accountGallery');
+            gallery.innerHTML = '';
+            currentAccount.images.slice(1).forEach(img => {
+                const galleryImg = document.createElement('div');
+                galleryImg.className = 'gallery-img';
+                galleryImg.onclick = () => {
+                    document.getElementById('modalMainImg').src = img;
+                };
+                galleryImg.innerHTML = `<img src="${img}" alt="Post">`;
+                gallery.appendChild(galleryImg);
+            });
+            
+            // Set account details
+            const details = document.getElementById('accountDetails');
+            details.innerHTML = '';
+            currentAccount.details.forEach(detail => {
+                const detailItem = document.createElement('div');
+                detailItem.className = 'detail-item';
+                detailItem.innerHTML = `
+                    <div class="detail-label">${detail.label}</div>
+                    <div class="detail-value">${detail.value}</div>
+                `;
+                details.appendChild(detailItem);
+            });
+            
+            // Set description
+            document.getElementById('accountDescription').innerHTML = `
+                <p>${currentAccount.description}</p>
+            `;
+            
+            // Set price
+            document.getElementById('modalAccountPrice').innerHTML = `
+                ${currentAccount.price}
+                <span class="price-original">${currentAccount.originalPrice}</span>
+            `;
+            
+            // Show modal
+            document.getElementById('accountModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModal() {
+            document.getElementById('accountModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('accountModal');
+            const successModal = document.getElementById('successModal');
+            
+            if (event.target == modal) {
+                closeModal();
+            }
+            if (event.target == successModal) {
+                closeSuccessModal();
+            }
+        }
+
+        // Show credentials after payment
+        function showCredentials(account) {
+            const credentialsContainer = document.getElementById('successCredentials');
+            credentialsContainer.innerHTML = `
+                <div class="credentials-title">
+                    <i class="${account.platformIcon}"></i>
+                    ${account.title}
+                </div>
+                <div class="credentials-item">
+                    <span class="credentials-label">Phone:</span>
+                    <span class="credentials-value">${account.phone}
+                        <button class="copy-btn" onclick="copyToClipboard('${account.phone}')">Copy</button>
+                    </span>
+                </div>
+                <div class="credentials-item">
+                    <span class="credentials-label">Password:</span>
+                    <span class="credentials-value">${account.password}
+                        <button class="copy-btn" onclick="copyToClipboard('${account.password}')">Copy</button>
+                    </span>
+                </div>
+                <div class="credentials-item" style="margin-top: 1rem;">
+                    <p style="color: var(--warning); font-size: 0.9rem;">
+                        <i class="fas fa-exclamation-triangle"></i> Please change the password immediately after login for security.
+                    </p>
+                </div>
+            `;
+            
+            document.getElementById('successModal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeSuccessModal() {
+            document.getElementById('successModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+            closeModal(); // Also close the account modal if it's open
+        }
+
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(function() {
+                alert('Copied to clipboard!');
+            }, function(err) {
+                console.error('Could not copy text: ', err);
+            });
+        }
+
+        // PayStack Payment Integration
+        function initiatePayment() {
+            if (!currentAccount) return;
+            
+            // Convert price to kobo (Paystack expects amount in the smallest currency unit)
+            const price = parseInt(currentAccount.price.replace(/[^0-9]/g, '')) * 100;
+            
+            const handler = PaystackPop.setup({
+                key: 'pk_test_71d220e5fd848c18440c04f724fbb94d8716cd98', // Your PayStack test public key
+                email: 'customer@example.com', // In a real app, get this from user input
+                amount: price,
+                currency: 'NGN',
+                ref: 'ACC_' + Math.floor(Math.random() * 1000000000 + 1),
+                metadata: {
+                    custom_fields: [
+                        {
+                            display_name: "Account Purchased",
+                            variable_name: "account_purchased",
+                            value: currentAccount.title + " (" + currentAccount.platform + ")"
+                        }
+                    ]
+                },
+                callback: function(response) {
+                    // Payment successful - show credentials
+                    showCredentials(currentAccount);
+                },
+                onClose: function() {
+                    console.log('Payment window closed');
+                }
+            });
+            
+            handler.openIframe();
+        }
+        
+        // Load PayStack script dynamically
+        function loadPaystack() {
+            const script = document.createElement('script');
+            script.src = 'https://js.paystack.co/v1/inline.js';
+            document.body.appendChild(script);
+        }
+    </script>
+</body>
+</html>
